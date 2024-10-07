@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="client.common.TestListener" />
+    </listeners>
+    <test verbose="2" preserve-order="true" name="Client_Automation">
+        <classes>
+            <class name="client.test.DemoTest">
+                <methods>
+                    <include name="testPass1"/>
+                    <include name="testPass2"/>
+                    <include name="testPass3"/>
+                    <include name="testPass4"/>
+                    <include name="testPass5"/>
+                    <include name="testFail1"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
