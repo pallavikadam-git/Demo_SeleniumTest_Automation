@@ -4,16 +4,37 @@ pipeline {
     environment {
         MAVEN_HOME = tool name: 'MAVEN_HOME', type: 'maven'
         PROJECT_DIR = 'C:\\Users\\IncubXperts\\IdeaProjects\\Demo_Test_Automation'
+        GIT_CREDENTIALS = '7483c9ad-55b3-40f5-9c0e-8d5764088aa6' // Add your Jenkins Git credentials ID here
+        REPO_URL = 'https://github.com/kalyanpawar/Demo_Test_Automation.git' // Replace with your private Git repo URL
+        BRANCH_NAME = 'main' // Replace with the branch name if necessary.
     }
 
     stages {
-        stage('Clean and Compile') {
+        stage('Checkout') {
             steps {
+                // Checkout code from private Git repository
                 dir(PROJECT_DIR) {
-                    bat "${MAVEN_HOME}/bin/mvn clean compile"
+                    git branch: "${BRANCH_NAME}", credentialsId: "${GIT_CREDENTIALS}", url: "${REPO_URL}"
                 }
             }
         }
+
+        stage('Clean') {
+            steps {
+                dir(PROJECT_DIR) {
+                    bat "${MAVEN_HOME}/bin/mvn clean"
+                }
+            }
+        }
+
+        stage('Compile') {
+            steps {
+                dir(PROJECT_DIR) {
+                    bat "${MAVEN_HOME}/bin/mvn compile"
+                }
+            }
+        }
+
         stage('Run Tests') {
             steps {
                 script {
@@ -25,6 +46,7 @@ pipeline {
                 }
             }
         }
+
         stage('Generate Reports Main Run') {
             steps {
                 dir(PROJECT_DIR) {
@@ -46,6 +68,7 @@ pipeline {
                 }
             }
         }
+
         stage('Rerun Failed Tests') {
             steps {
                 script {
@@ -64,6 +87,7 @@ pipeline {
                 }
             }
         }
+
         stage('Generate Report For Rerun') {
             steps {
                 dir(PROJECT_DIR) {
