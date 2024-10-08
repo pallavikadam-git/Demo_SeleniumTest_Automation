@@ -9,13 +9,6 @@ pipeline {
     }
 
     stages {
-        // stage('Checkout') {
-        //     steps {
-        //         // Checkout code from private Git repository
-        //         git branch: "${BRANCH_NAME}", credentialsId: "${GIT_CREDENTIALS}", url: "${REPO_URL}"
-        //     }
-        // }
-
         stage('Clean') {
             steps {
                 bat "${MAVEN_HOME}/bin/mvn clean"
