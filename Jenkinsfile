@@ -33,7 +33,7 @@ pipeline {
                 script {
                     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
                         // bat "${MAVEN_HOME}/bin/mvn test"
-                        bat "${MAVEN_HOME}/bin/mvn test -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless% -DpropFile=src\\main\\Resources\\reportportal.properties
+                        bat "${MAVEN_HOME}/bin/mvn test -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless% -DpropFile=src\\main\\Resources\\reportportal.properties"
                     }
                 }
             }
@@ -67,7 +67,8 @@ pipeline {
                         // Copy the failed test suite to a new file to avoid overwriting original results
                         bat 'copy target\\surefire-reports\\testng-failed.xml target\\surefire-reports\\testng-rerun.xml'
                         catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                            bat "${MAVEN_HOME}/bin/mvn -Dsurefire.suiteXmlFiles=target/surefire-reports/testng-rerun.xml verify"
+                            // bat "${MAVEN_HOME}/bin/mvn -Dsurefire.suiteXmlFiles=target/surefire-reports/testng-rerun.xml verify"
+                            bat "${MAVEN_HOME}/bin/mvn -Dsurefire.suiteXmlFiles=target/surefire-reports/testng-rerun.xml -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless% verify"
                         }
                     } else {
                         echo 'No failed tests to rerun.'
