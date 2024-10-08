@@ -108,7 +108,7 @@ pipeline {
             script {
                 archiveArtifacts artifacts: 'TestReport/ExtentReport.html', allowEmptyArchive: true
                 archiveArtifacts artifacts: 'TestReportDir/ExtentReport.html', allowEmptyArchive: true
-                junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+                junit allowFailedTests: true, testResults: 'target/surefire-reports/*.xml'
             }
             cleanWs()
         }
