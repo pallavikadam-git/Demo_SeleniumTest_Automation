@@ -26,7 +26,7 @@ pipeline {
                 script {
                     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
                         // bat "${MAVEN_HOME}/bin/mvn test"
-                        bat "${MAVEN_HOME}/bin/mvn test -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless% -DpropFile=src\\main\\Resources\\reportportal.properties"
+                        bat "${MAVEN_HOME}/bin/mvn test -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless%"
                     }
                 }
             }
