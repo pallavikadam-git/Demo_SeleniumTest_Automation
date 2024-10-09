@@ -47,12 +47,6 @@
       <version>5.2.3</version> <!-- Check the latest version -->
     </dependency>
     <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <version>7.10.2</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
       <groupId>com.aventstack</groupId>
       <artifactId>extentreports</artifactId>
       <version>5.0.9</version> <!-- Check for the latest version -->
