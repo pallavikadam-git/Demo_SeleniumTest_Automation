@@ -3,9 +3,6 @@ pipeline {
 
     environment {
         MAVEN_HOME = tool name: 'MAVEN_HOME', type: 'maven'
-        GIT_CREDENTIALS = '7483c9ad-55b3-40f5-9c0e-8d5764088aa6' // Replace with your Jenkins Git credentials ID
-        REPO_URL = 'https://github.com/kalyanpawar/Demo_Test_Automation.git' // Replace with your private Git repo URL
-        BRANCH_NAME = 'main' // Replace with the branch name if necessary
     }
 
     stages {
