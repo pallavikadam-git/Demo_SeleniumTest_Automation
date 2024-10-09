@@ -13,6 +13,11 @@ import org.testng.annotations.*;
 public class DriverClass {
     public static WebDriver driver;
 
+    @BeforeSuite
+    public void beforeSuite(){
+        ReportPortalConfig.startLaunch();
+    }
+
     @BeforeMethod
     @Parameters(value={"url", "browser", "isHeadless"})
     public void driverSetUp(@Optional(ClientUrl.LOGIN_URL) String url, @Optional("chrome") String browser, @Optional("false") boolean isHeadless){
@@ -27,6 +32,11 @@ public class DriverClass {
     @AfterMethod
     public void tearDown(){
         driver.quit();
+    }
+
+    @AfterSuite
+    public void afterSuite(){
+        ReportPortalConfig.stopLaunch();
     }
 
     private static WebDriver setBrowser(String browserName, boolean isHeadless){

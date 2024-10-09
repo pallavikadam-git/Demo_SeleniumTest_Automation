@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 public class DateUtils {
 
     private static String yyyymmdd = "MM/dd/yyyy";
+    private static final String yyyymmddHHmmss = "MM/dd/yyyy HH:mm:ss";
 
     // Method to get today's date mm/dd/yyyy
     public static String getTodaysDate() {
@@ -26,5 +27,9 @@ public class DateUtils {
     public static String formatDate(LocalDate date, String pattern) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
         return date.format(formatter);
+    }
+
+    public static String getTimeStamp() {
+        return LocalDate.now().format(DateTimeFormatter.ofPattern(yyyymmddHHmmss));
     }
 }
