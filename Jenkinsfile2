@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                        sh "${MAVEN_HOME}/bin/mvn test -Durl=${Env} -Dbrowser=${Browser} -DisHeadless=${isHeadless}"
+                        sh "${MAVEN_HOME}/bin/mvn test -Durl=${Envv} -Dbrowser=${Browser} -DisHeadless=${isHeadless}"
                     }
                 }
             }
