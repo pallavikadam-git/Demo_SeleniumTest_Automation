@@ -66,6 +66,15 @@ public class DriverClass {
                 options.addArguments("--headless");
             driver = new FirefoxDriver(options);
         }
+        else if(browserName.equalsIgnoreCase("chromium")){
+            WebDriverManager.chromedriver().setup();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            if(isHeadless)
+                options.addArguments("--headless=old");
+            options.setBinary("/usr/bin/chromium-browser");
+            driver = new ChromeDriver(options);
+        }
         return driver;
     }
 }
