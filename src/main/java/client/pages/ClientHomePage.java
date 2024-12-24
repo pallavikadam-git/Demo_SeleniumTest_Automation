@@ -2,142 +2,130 @@ package client.pages;
 
 import org.testng.Assert;
 import client.common.BaseClass;
-import client.common.ClientTestValues;
+
+import java.util.List;
 
 public class ClientHomePage extends BaseClass {
     // XPaths
-    private static final String COMMON_HEADER_XPATH = "//*[@role='button']//child::span[text()='%s']";
-    
+    private static final String FILTER_DROPDOWN_XPATH = "//select[@class='product_sort_container']";
+    private static final String INVENTORY_ITEM_TEXT_XPATH = "//*[@data-test = 'inventory-item-name']";
+    private static final String BURGER_BUTTON_XPATH = "//*[@class='bm-burger-button']";
+    private static final String LOGOUT_XPATH = "//*[@id='logout_sidebar_link']";
+    private static final String INVENTORY_ITEM_PRICE_XPATH = "//*[@class='inventory_item_price']";
+    private static final String INVENTORY_PRICE_XPATH = "//*[text()='%s']/ancestor::div[@class='inventory_item_label']/following-sibling::div/child::div";
+    private static final String ADD_TO_CART_REMOVE_XPATH = "//*[text()='%s']/ancestor::div[@class='inventory_item_label']/following-sibling::div/child::button";
+    private static final String ITEMS_COUNT_IN_CART_XPATH = "//*[@class='shopping_cart_badge']";
+    private static final String CART_XPATH = "//*[@class='shopping_cart_link']";
 
     // Field Names
-    private static final String DASHBOARD_URL = "https://qa.veraxerp.com/dashboard";
-    private static final String LOGOUT = "Log Out";
-    
+    private static final String FILTER_DROPDOWN_FIELD = "Filter dropdown field";
+    private static final String INVENTORY_ITEM_ORDER = "Inventory Items Order";
+    private static final String LEFT_PANEL_BURGER_BUTTON = "Left panel burger button";
+    private static final String LOGOUT_BUTTON = "Logout Button";
+    private static final String ADD_TO_CART = "Add to Cart Button";
+    private static final String CART_ITEM_COUNT = "Cart item count";
+    private static final String CART = "Cart";
 
-//    /**
-//     * Logs out from the application by clicking on the logout button.
-//     */
-//    public void logout() {
-//        openProfilePanel();
-//        click(String.format(COMMON_XPATH, LOGOUT), LOGOUT);
-//    }
-//
-//    /**
-//     * Clicks on the CRM header.
-//     */
-//    public void clickOnCRM() {
-//        click(String.format(COMMON_HEADER_XPATH, CRM), CRM_HEADER);
-//    }
-//
-//    /**
-//     * Clicks on the Opportunities link.
-//     */
-//    public OpportunitiesPage clickOpportunities() {
-//        click(String.format(COMMON_XPATH, OPPORTUNITIES), OPPORTUNITIES);
-//        return new OpportunitiesPage();
-//    }
-//
-//    /**
-//     * Performs a control-click on the Opportunities link and opens it in a new tab.
-//     * @return an instance of the OpportunitiesPage.
-//     */
-//    public OpportunitiesPage controlClickAndOpenOpportunities() {
-//        controlClickAndOpen(String.format(COMMON_XPATH, OPPORTUNITIES), OPPORTUNITIES);
-//        return new OpportunitiesPage();
-//    }
-//
-//    /**
-//     * Validates that the dashboard page is opened by checking the URL and the presence of a panel heading.
-//     */
-//    public void validateDashboardPageIsOpened() {
-//        waitUntilElementIsDisplayed(String.format(COMMON_XPATH, ClientTestValues.PANEL_HEADING), DASHBOARD_PANEL_HEADING);
-//        Assert.assertEquals(driver.getCurrentUrl(), DASHBOARD_URL);
-//    }
-//
-//    /**
-//     * Opens the profile panel by clicking on the corresponding navbar item.
-//     */
-//    public void openProfilePanel() {
-//        click(String.format(NAV_BAR_XPATH, 3), PROFILE_PANEL);
-//    }
-//
-//    /**
-//     * Clicks on the TPI Shop Setup link.
-//     * @return an instance of the TPIShopSetupPage.
-//     **/
-//    public TPIShopSetupPage clickTPIShopSetUp() {
-//        click(String.format(COMMON_XPATH, TPI_SHOP_SETUP), TPI_SHOP_SETUP);
-//        return new TPIShopSetupPage();
-//    }
-//
-//    /**
-//     * Validates the toaster message displayed after an action.
-//     * @param message the expected message to validate against.
-//     */
-//    public void validateToasterMessage(String message) {
-//        waitUntilElementIsLoaded(TOASTER_XPATH, message, TOASTER_MESSAGE);
-//        Assert.assertEquals(getText(TOASTER_XPATH, TOASTER_MESSAGE), message);
-////        waitUntilElementIsDisappeared(TOASTER_XPATH, TOASTER_MESSAGE);
-//    }
-//
-//    /**
-//     * Switches to the other open tab in the browser.
-//     */
-//    public void switchToOtherTabs() {
-//        switchToOtherTab();
-//    }
-//
-//    /**
-//     * Refreshes the current page.
-//     */
-//    public void refreshPage() {
-//        refresh();
-//    }
-//
-//    /**
-//     * Clicks on the Inventory header.
-//     */
-//    public void clickInventory() {
-//        click(String.format(COMMON_HEADER_XPATH, INVENTORY), INVENTORY_HEADER);
-//    }
-//
-//    /**
-//     * Clicks on the Routers link.
-//     * return RoutersPage instance.
-//     */
-//    public RoutersPage clickRouters() {
-//        click(String.format(COMMON_XPATH, ROUTERS), ROUTERS);
-//        return new RoutersPage();
-//    }
-//
-//    /**
-//     * Clicks on the CRM header.
-//     */
-//    public void clickOnWorkFlowHeader() {
-//        click(String.format(COMMON_HEADER_XPATH, WORKFLOW), WORKFLOW_HEADER);
-//    }
-//
-//    /**
-//     * Clicks on the Release Work link.
-//     */
-//    public ReleaseWorkPage controlClickReleaseWork() {
-//        controlClickAndOpen(String.format(COMMON_XPATH, RELEASE_WORK), RELEASE_WORK);
-//        return new ReleaseWorkPage();
-//    }
-//
-//    /**
-//     * Clicks on the Work Order.
-//     */
-//    public void clickWorkOrder() {
-//        click(String.format(COMMON_XPATH, WORK_ORDERS), WORK_ORDERS);
-//    }
-//
-//    /**
-//     * Clicks on the Manage Work Order link.
-//     * return ManageWorkOrderPage instance.
-//     */
-//    public ManageWorkOrderPage clickManageWorkOrder() {
-//        click(String.format(COMMON_XPATH, MANAGE_WORK_ORDERS), MANAGE_WORK_ORDERS);
-//        return new ManageWorkOrderPage();
-//    }
+    /**
+     * Switches to the other open tab in the browser.
+     */
+    public void switchToOtherTabs() {
+        switchToOtherTab();
+    }
+
+    /**
+     * Refreshes the current page.
+     */
+    public void refreshPage() {
+        refresh();
+    }
+
+    /**
+     * validates selected option from the filter dropdown.
+     * @param option
+     */
+    public void validateSelectedOptionForFilterDropdown(String option) {
+        Assert.assertEquals(getSelectedOption(FILTER_DROPDOWN_FIELD, FILTER_DROPDOWN_XPATH), option);
+    }
+
+    /**
+     * validates inventory items order on the page.
+     * @param items
+     */
+    public void validateInventoryItemsOrder(List<String> items) {
+        List<String> actualOrder = getTexts(INVENTORY_ITEM_TEXT_XPATH, INVENTORY_ITEM_ORDER);
+        Assert.assertEquals(actualOrder, items);
+    }
+
+    /**
+     * Selects option for Filter dropdown field.
+     */
+    public void selectOptionForFilterDropdown(String option) {
+        selectByText(FILTER_DROPDOWN_XPATH, option, FILTER_DROPDOWN_FIELD);
+    }
+
+    /**
+     * Opens left menu on the page.
+     */
+    public void openLeftMenu(){
+        click(BURGER_BUTTON_XPATH, LEFT_PANEL_BURGER_BUTTON);
+    }
+
+    /**
+     * Clicks logout link.
+     */
+    public void clickLogout(){
+        click(LOGOUT_XPATH, LOGOUT_BUTTON);
+    }
+
+    /**
+     * logouts from the application.
+     */
+    public void logout(){
+        openLeftMenu();
+        clickLogout();
+    }
+
+    /**
+     * validates inventory items price order on the page.
+     * @param prices
+     */
+    public void validateInventoryItemsPriceOrder(List<String> prices) {
+        List<String> actualOrder = getTexts(INVENTORY_ITEM_PRICE_XPATH, INVENTORY_ITEM_ORDER);
+        Assert.assertEquals(actualOrder, prices);
+    }
+
+    /**
+     * validates inventory item price.
+     * @param itemName - item name for which the price is being validated.
+     * @param price
+     */
+    public void validatePriceForItem(String itemName, String price) {
+        String actualprice = getText(String.format(INVENTORY_PRICE_XPATH, itemName), itemName);
+        Assert.assertEquals(actualprice, price);
+    }
+
+    /**
+     * Adds Item to Cart
+     * @param itemName - item name for which the price is being validated.
+     */
+    public void addItemToCartOrRemove(String itemName) {
+        click(String.format(ADD_TO_CART_REMOVE_XPATH, itemName), ADD_TO_CART);
+    }
+
+    /**
+     * Validates the number of items in cart.
+     * @param itemsCount - item name for which the price is being validated.
+     */
+    public void validateItemsInCart(Integer itemsCount) {
+        Assert.assertEquals(getText(ITEMS_COUNT_IN_CART_XPATH, CART_ITEM_COUNT), String.valueOf(itemsCount));
+    }
+
+    /**
+     * Opens Cart page
+     */
+    public YourCartPage clickOpenCart() {
+        click(CART_XPATH, CART);
+        return new YourCartPage();
+    }
 }
