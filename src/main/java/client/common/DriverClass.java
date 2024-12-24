@@ -40,9 +40,9 @@ public class DriverClass {
     }
 
     private static WebDriver setBrowser(String browserName, boolean isHeadless){
-        if (browserName == null || browserName.isEmpty()) {
-            browserName = "chrome"; // Default browser
-        }
+//        if (browserName == null || browserName.isEmpty()) {
+//            browserName = "chrome"; // Default browser
+//        }
         if(browserName.equalsIgnoreCase("chrome")){
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
@@ -66,15 +66,19 @@ public class DriverClass {
                 options.addArguments("--headless");
             driver = new FirefoxDriver(options);
         }
-        else if(browserName.equalsIgnoreCase("chromium")){
-            WebDriverManager.chromedriver().setup();
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--remote-allow-origins=*");
-            if(isHeadless)
-                options.addArguments("--headless=old");
-            options.setBinary("/usr/bin/chromium-browser");
-            driver = new ChromeDriver(options);
-        }
+//        else if(browserName.equalsIgnoreCase("chromium")){
+//            WebDriverManager.chromedriver().setup();
+//            ChromeOptions options = new ChromeOptions();
+//            options.addArguments("--remote-allow-origins=*");
+//            if(isHeadless)
+//                options.addArguments("--headless=old");
+//            options.setBinary("/usr/bin/chromium-browser");
+//            driver = new ChromeDriver(options);
+//        }
+        return driver;
+    }
+
+    public static WebDriver getDriver(){
         return driver;
     }
 }

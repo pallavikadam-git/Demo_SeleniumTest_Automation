@@ -2,6 +2,7 @@ package client.common;
 
 import com.epam.reportportal.testng.ReportPortalTestNGListener;
 //import com.epam.reportportal.testng.ReportPortalTestNGListener;
+import lombok.SneakyThrows;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 
@@ -20,8 +21,9 @@ public class ReportPortalTestListener extends ReportPortalTestNGListener {
         super.onTestSuccess(result);
     }
 
+    @SneakyThrows
     @Override
-    public void onTestFailure(ITestResult result) throws Throwable {
+    public void onTestFailure(ITestResult result) {
         super.onTestFailure(result);
         ReportPortalHelper.saveAttachments(result, DriverClass.getDriver());
     }
