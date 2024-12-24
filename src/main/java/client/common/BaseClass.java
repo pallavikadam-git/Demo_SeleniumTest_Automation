@@ -532,4 +532,17 @@ public class BaseClass extends TestListener {
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         return element.isEnabled();
     }
+
+    /**
+     * Returns selected option from a dropdown.
+     * @param fieldName the descriptive name of the field for which option is in the check.
+     * @param xpath the xpath locator for the WebElement to check
+     * @return selected option
+     */
+    public String getSelectedOption(String fieldName, String xpath) {
+        Select select = new Select(getWebElement(xpath));
+        String selectedOption = select.getFirstSelectedOption().getText();
+        log(PASS, "Successfully read selected option from " + fieldName + ": " + selectedOption);
+        return selectedOption;
+    }
 }
