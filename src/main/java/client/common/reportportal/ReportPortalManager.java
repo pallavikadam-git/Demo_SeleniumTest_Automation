@@ -1,4 +1,4 @@
-package client.common;
+package client.common.reportportal;
 import com.epam.reportportal.service.ReportPortal;
 
 public class ReportPortalManager {

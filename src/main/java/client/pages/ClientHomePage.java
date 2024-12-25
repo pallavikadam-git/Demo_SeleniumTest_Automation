@@ -75,6 +75,7 @@ public class ClientHomePage extends BaseClass {
      * Clicks logout link.
      */
     public void clickLogout(){
+        waitUntilElementIsDisplayed(LOGOUT_XPATH, LOGOUT_BUTTON);
         click(LOGOUT_XPATH, LOGOUT_BUTTON);
     }
 
@@ -119,6 +120,7 @@ public class ClientHomePage extends BaseClass {
      */
     public void validateItemsInCart(Integer itemsCount) {
         Assert.assertEquals(getText(ITEMS_COUNT_IN_CART_XPATH, CART_ITEM_COUNT), String.valueOf(itemsCount));
+        Assert.assertTrue(false);
     }
 
     /**

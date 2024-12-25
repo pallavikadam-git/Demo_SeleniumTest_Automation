@@ -69,12 +69,6 @@
     </dependency>
     <dependency>
       <groupId>com.epam.reportportal</groupId>
-      <artifactId>agent-java-testng</artifactId>
-      <version>5.4.4</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.epam.reportportal</groupId>
       <artifactId>client-java</artifactId>
       <version>5.2.15</version>
       <scope>test</scope>
@@ -89,6 +83,12 @@
       <artifactId>agent-java-testng</artifactId>
       <version>5.4.4</version>
       <scope>compile</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>33.4.0-jre</version>
     </dependency>
     <dependency>
       <groupId>com.epam.reportportal</groupId>

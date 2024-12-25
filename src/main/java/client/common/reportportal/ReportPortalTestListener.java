@@ -1,19 +1,17 @@
-package client.common;
+package client.common.reportportal;
 
+import client.common.DriverClass;
 import com.epam.reportportal.testng.ReportPortalTestNGListener;
-//import com.epam.reportportal.testng.ReportPortalTestNGListener;
 import lombok.SneakyThrows;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
-
-import java.sql.DriverManager;
 
 public class ReportPortalTestListener extends ReportPortalTestNGListener {
 
     @Override
     public void onTestStart(ITestResult result) {
+//        ReportPortalConfig.startLaunch();
         super.onTestStart(result);
-        // Add additional logic here if needed
     }
 
     @Override
@@ -24,8 +22,12 @@ public class ReportPortalTestListener extends ReportPortalTestNGListener {
     @SneakyThrows
     @Override
     public void onTestFailure(ITestResult result) {
+        try {
+            ReportPortalHelper.saveAttachments(result, DriverClass.getDriver());
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
         super.onTestFailure(result);
-        ReportPortalHelper.saveAttachments(result, DriverClass.getDriver());
     }
 
     @Override
@@ -40,6 +42,7 @@ public class ReportPortalTestListener extends ReportPortalTestNGListener {
 
     @Override
     public void onFinish(ITestContext context) {
+//        ReportPortalConfig.stopLaunch();
         super.onFinish(context);
     }
 }

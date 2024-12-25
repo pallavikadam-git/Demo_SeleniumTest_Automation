@@ -1,5 +1,7 @@
-package client.common;
+package client.common.extentreport;
 
+import client.common.DriverClass;
+import client.common.ScreenshotUtility;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import org.testng.ITestContext;

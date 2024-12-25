@@ -1,4 +1,4 @@
-package client.common;
+package client.common.reportportal;
 
 import com.epam.reportportal.service.ReportPortal;
 //import com.ontada.qa.shared.legacy.TestCaseIdValue;
@@ -25,7 +25,7 @@ import org.testng.ITestResult;
 public class ReportPortalHelper {
     private static String TestCaseIdValue = "221"; //TestCaseIdValue.getID()
     private static final Logger log = LogManager.getLogger(ReportPortalHelper.class);
-    private static final ThreadLocal<File> qTestFileStorage = new ThreadLocal();
+//    private static final ThreadLocal<File> qTestFileStorage = new ThreadLocal();
 
     private ReportPortalHelper() {
         throw new UnsupportedOperationException("Illegal access to private constructor");
@@ -36,7 +36,7 @@ public class ReportPortalHelper {
         WebDriver webDriver = (new Augmenter()).augment(driver);
         String fileName = String.format("[%s]%s-%d-%d", TestCaseIdValue, testMethod.getName(), Thread.currentThread().getId(), Calendar.getInstance().getTime().getTime());
         attacheScreenshot(webDriver, fileName);
-        attacheHtml(webDriver.getPageSource(), fileName);
+//        attacheHtml(webDriver.getPageSource(), fileName);
     }
 
     public static void attacheScreenshot(WebDriver driver, String screenshotName) throws Throwable {
@@ -46,8 +46,9 @@ public class ReportPortalHelper {
             Path destFolder = Paths.get("target", "report-portal", TestCaseIdValue).toAbsolutePath();
             Files.createDirectories(destFolder);
             Path destFile = Paths.get(destFolder.toString(), screenshotName);
-            File screenshot = (File)((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-            qTestFileStorage.set(destFile.toFile());
+//            File screenshot = (File)((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+//            qTestFileStorage.set(destFile.toFile());
             Files.copy(new DataInputStream(new FileInputStream(screenshot)), destFile, new CopyOption[0]);
             attacheFile(destFile.toFile(), "ERROR");
         } catch (Throwable var5) {
@@ -94,11 +95,11 @@ public class ReportPortalHelper {
         }
     }
 
-    public static void cleanUp() {
-        qTestFileStorage.remove();
-    }
-
-    public static ThreadLocal<File> getQTestFileStorage() {
-        return qTestFileStorage;
-    }
+//    public static void cleanUp() {
+//        qTestFileStorage.remove();
+//    }
+//
+//    public static ThreadLocal<File> getQTestFileStorage() {
+//        return qTestFileStorage;
+//    }
 }

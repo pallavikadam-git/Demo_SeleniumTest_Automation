@@ -1,5 +1,6 @@
 package client.common;
 
+import client.common.reportportal.ReportPortalConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,6 +24,7 @@ public class DriverClass {
     public void driverSetUp(@Optional(ClientUrl.LOGIN_URL) String url, @Optional("chrome") String browser, @Optional("false") boolean isHeadless){
         driver = setBrowser(browser, isHeadless);
         driver.manage().window().maximize();
+//        driver.manage().window().minimize();
         if (url == null || url.isEmpty()) {
             url = LoginCreds.LOGIN_URL;
         }
@@ -31,7 +33,7 @@ public class DriverClass {
 
     @AfterMethod
     public void tearDown(){
-//        driver.quit();
+        driver.quit();
     }
 
     @AfterSuite
@@ -40,9 +42,6 @@ public class DriverClass {
     }
 
     private static WebDriver setBrowser(String browserName, boolean isHeadless){
-//        if (browserName == null || browserName.isEmpty()) {
-//            browserName = "chrome"; // Default browser
-//        }
         if(browserName.equalsIgnoreCase("chrome")){
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
@@ -66,15 +65,6 @@ public class DriverClass {
                 options.addArguments("--headless");
             driver = new FirefoxDriver(options);
         }
-//        else if(browserName.equalsIgnoreCase("chromium")){
-//            WebDriverManager.chromedriver().setup();
-//            ChromeOptions options = new ChromeOptions();
-//            options.addArguments("--remote-allow-origins=*");
-//            if(isHeadless)
-//                options.addArguments("--headless=old");
-//            options.setBinary("/usr/bin/chromium-browser");
-//            driver = new ChromeDriver(options);
-//        }
         return driver;
     }
 

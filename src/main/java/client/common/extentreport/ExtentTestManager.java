@@ -1,4 +1,4 @@
-package client.common;
+package client.common.extentreport;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
