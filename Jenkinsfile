@@ -23,7 +23,8 @@ pipeline {
                 script {
                     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
                         // bat "${MAVEN_HOME}/bin/mvn test"
-                        bat "${MAVEN_HOME}/bin/mvn test -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless%"
+                        //bat "${MAVEN_HOME}/bin/mvn test -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless%"
+                        bat "${MAVEN_HOME}/bin/mvn test -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless% -Drp.attributes=Run:Main"
                     }
                 }
             }
@@ -58,7 +59,8 @@ pipeline {
                         bat 'copy target\\surefire-reports\\testng-failed.xml target\\surefire-reports\\testng-rerun.xml'
                         catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
                             // bat "${MAVEN_HOME}/bin/mvn -Dsurefire.suiteXmlFiles=target/surefire-reports/testng-rerun.xml verify"
-                            bat "${MAVEN_HOME}/bin/mvn -Dsurefire.suiteXmlFiles=target/surefire-reports/testng-rerun.xml -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless% verify"
+                            // bat "${MAVEN_HOME}/bin/mvn -Dsurefire.suiteXmlFiles=target/surefire-reports/testng-rerun.xml -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless% verify"
+                            bat "${MAVEN_HOME}/bin/mvn -Dsurefire.suiteXmlFiles=target/surefire-reports/testng-rerun.xml -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless% -Drp.attributes=Run:Rerun verify"
                         }
                     } else {
                         echo 'No failed tests to rerun.'
