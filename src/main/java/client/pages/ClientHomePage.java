@@ -1,5 +1,6 @@
 package client.pages;
 
+import com.epam.reportportal.annotations.Step;
 import org.testng.Assert;
 import client.common.BaseClass;
 
@@ -67,6 +68,7 @@ public class ClientHomePage extends BaseClass {
     /**
      * Opens left menu on the page.
      */
+    @Step
     public void openLeftMenu(){
         click(BURGER_BUTTON_XPATH, LEFT_PANEL_BURGER_BUTTON);
     }
@@ -74,6 +76,7 @@ public class ClientHomePage extends BaseClass {
     /**
      * Clicks logout link.
      */
+    @Step("clicking on Logout Button")
     public void clickLogout(){
         waitUntilElementIsDisplayed(LOGOUT_XPATH, LOGOUT_BUTTON);
         click(LOGOUT_XPATH, LOGOUT_BUTTON);
@@ -82,6 +85,7 @@ public class ClientHomePage extends BaseClass {
     /**
      * logouts from the application.
      */
+    @Step
     public void logout(){
         openLeftMenu();
         clickLogout();
@@ -101,6 +105,7 @@ public class ClientHomePage extends BaseClass {
      * @param itemName - item name for which the price is being validated.
      * @param price
      */
+    @Step
     public void validatePriceForItem(String itemName, String price) {
         String actualprice = getText(String.format(INVENTORY_PRICE_XPATH, itemName), itemName);
         Assert.assertEquals(actualprice, price);
@@ -110,6 +115,7 @@ public class ClientHomePage extends BaseClass {
      * Adds Item to Cart
      * @param itemName - item name for which the price is being validated.
      */
+    @Step
     public void addItemToCartOrRemove(String itemName) {
         click(String.format(ADD_TO_CART_REMOVE_XPATH, itemName), ADD_TO_CART);
     }
@@ -118,6 +124,7 @@ public class ClientHomePage extends BaseClass {
      * Validates the number of items in cart.
      * @param itemsCount - item name for which the price is being validated.
      */
+    @Step
     public void validateItemsInCart(Integer itemsCount) {
         Assert.assertEquals(getText(ITEMS_COUNT_IN_CART_XPATH, CART_ITEM_COUNT), String.valueOf(itemsCount));
         Assert.assertTrue(false);
@@ -126,6 +133,7 @@ public class ClientHomePage extends BaseClass {
     /**
      * Opens Cart page
      */
+    @Step
     public YourCartPage clickOpenCart() {
         click(CART_XPATH, CART);
         return new YourCartPage();

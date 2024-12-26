@@ -1,6 +1,7 @@
 package client.pages;
 
 import client.common.BaseClass;
+import com.epam.reportportal.annotations.Step;
 import org.testng.Assert;
 
 public class  YourCartPage extends BaseClass {
@@ -21,6 +22,7 @@ public class  YourCartPage extends BaseClass {
      * @param itemName - the item for which the description is being validated.
      * @param description
      */
+    @Step
     public void validateDescriptionForItems(String itemName, String description) {
         Assert.assertEquals(getText(String.format(ITEM_DESCRIPTION_XPATH, itemName), ITEM_DESCRIPTION), description);
     }
@@ -30,6 +32,7 @@ public class  YourCartPage extends BaseClass {
      * @param itemName - the item for which the price is being validated.
      * @param price
      */
+    @Step
     public void validatePriceForItems(String itemName, String price) {
         Assert.assertEquals(getText(String.format(ITEM_PRICE_XPATH, itemName), ITEM_PRICE), price);
     }
@@ -38,6 +41,7 @@ public class  YourCartPage extends BaseClass {
      * Removes Item from Cart.
      * @param itemName - the item to be removed from cart.
      */
+    @Step
     public void removeItemFromCart(String itemName) {
         click(String.format(REMOVE_ITEM_XPATH, itemName), REMOVE_ITEM);
     }
@@ -45,6 +49,7 @@ public class  YourCartPage extends BaseClass {
     /**
      * Clicks continue shopping button.
      */
+    @Step
     public ClientHomePage clickContinueShoppingButton() {
         click(CONTINUE_SHOPPING_BUTTON_XPATH, CONTINUE_SHOPPING);
         return new ClientHomePage();

@@ -1,5 +1,6 @@
 package client.pages;
 
+import com.epam.reportportal.annotations.Step;
 import org.testng.Assert;
 import client.common.BaseClass;
 import client.common.LoginCreds;
@@ -18,6 +19,7 @@ public class LoginPage extends BaseClass {
      * Logs in to the application using the provided credentials.
      * @return A new instance of ClientHomePage after a successful login.
      */
+    @Step
     public ClientHomePage login() {
         sendKeys(USER_NAME_XPATH, LoginCreds.USER_NAME, USERNAME);
         sendKeys(PASSWORD_XPATH, LoginCreds.PASSWORD, PASSWORD);

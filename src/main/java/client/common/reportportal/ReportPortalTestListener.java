@@ -1,6 +1,7 @@
 package client.common.reportportal;
 
 import client.common.DriverClass;
+import client.common.extentreport.ExtentTestManager;
 import com.epam.reportportal.testng.ReportPortalTestNGListener;
 import lombok.SneakyThrows;
 import org.testng.ITestContext;
@@ -10,7 +11,9 @@ public class ReportPortalTestListener extends ReportPortalTestNGListener {
 
     @Override
     public void onTestStart(ITestResult result) {
-//        ReportPortalConfig.startLaunch();
+//        test = new ExtentTestManager().createTest(result.getMethod().getMethodName());
+//        test.assignCategory("Test ID: "+ result.getMethod().getDescription());
+//        System.out.println(result.getMethod().getMethodName() + " started!");
         super.onTestStart(result);
     }
 
@@ -42,7 +45,6 @@ public class ReportPortalTestListener extends ReportPortalTestNGListener {
 
     @Override
     public void onFinish(ITestContext context) {
-//        ReportPortalConfig.stopLaunch();
         super.onFinish(context);
     }
 }
