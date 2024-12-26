@@ -6,6 +6,7 @@ import client.pages.LoginPage;
 import client.pages.YourCartPage;
 import com.epam.reportportal.annotations.Description;
 import com.epam.reportportal.annotations.TestCaseId;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import client.common.*;
@@ -23,7 +24,7 @@ public class DemoTest extends DriverClass {
      */
     @Test(description = "TC-01")
     @TestCaseId("TC-01") // Test case ID in Report Portal
-    @Description("Validate Filter Operations For Alphabetical and Reverese Alphabetical Options.")
+//    @Description("Validate Filter Operations For Alphabetical and Reverese Alphabetical Options.")
     public static void validateFilterOperationsForAlphabeticalAndReverseAlphabeticalOptions() {
         String nameA2Z = "Name (A to Z)";
         String nameZ2A = "Name (Z to A)";
@@ -46,7 +47,7 @@ public class DemoTest extends DriverClass {
      */
     @Test(description = "TC-02")
     @TestCaseId("TC-02") // Test case ID in Report Portal
-    @Description("Validate Filter Operations For Price Low-High and High-Low.")
+//    @Description("Validate Filter Operations For Price Low-High and High-Low.")
     public static void validateFilterOperationsForPriceLowToHighAndHighToLow() {
         String nameA2Z = "Name (A to Z)";
         String priceLow2High = "Price (low to high)";
@@ -81,7 +82,7 @@ public class DemoTest extends DriverClass {
      */
     @Test(description = "TC-03")
     @TestCaseId("TC-03") // Test case ID in Report Portal
-    @Description("To validate Item Details On Cart Page.")
+//    @Description("To validate Item Details On Cart Page.")
     public static void toValidateItemDetailsOnCartPage() {
         String item1 = "Sauce Labs Onesie";
         String price1 = "$7.99";
@@ -111,6 +112,13 @@ public class DemoTest extends DriverClass {
         yourCartPage.clickContinueShoppingButton();
         clientHomePage.validateItemsInCart(1);
         clientHomePage.logout();
+    }
+
+    @Test(description = "TC-04")
+    @TestCaseId("TC-04") // Test case ID in Report Portal
+//    @Description("To validate Item Details On Cart Page.")
+    public static void demotest() {
+        Assert.assertTrue(false);
     }
 }
 
