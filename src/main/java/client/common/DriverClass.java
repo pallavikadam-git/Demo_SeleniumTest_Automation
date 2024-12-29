@@ -2,6 +2,8 @@ package client.common;
 
 import client.common.reportportal.ReportPortalConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -11,12 +13,17 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.*;
 
+@Slf4j
 public class DriverClass {
     public static WebDriver driver;
+    public static Integer TEST_RUN_ID;
 
+    @SneakyThrows
     @BeforeSuite
     public void beforeSuite(){
         ReportPortalConfig.startLaunch();
+        TEST_RUN_ID = TestCaseLabRun.createTestRun("Regression Run - " + System.currentTimeMillis());
+        log.info("Test Run Created with ID: " + TEST_RUN_ID);
     }
 
     @BeforeMethod

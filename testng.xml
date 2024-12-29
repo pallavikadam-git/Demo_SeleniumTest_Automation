@@ -14,7 +14,6 @@
                     <include name="validateFilterOperationsForAlphabeticalAndReverseAlphabeticalOptions"/>
                     <include name="validateFilterOperationsForPriceLowToHighAndHighToLow"/>
                     <include name="toValidateItemDetailsOnCartPage"/>
-                    <include name="demotest"/>
                 </methods>
             </class>
         </classes>

@@ -14,6 +14,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Calendar;
 import java.util.Objects;
+
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
@@ -22,9 +25,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.Augmenter;
 import org.testng.ITestResult;
 
+@Log4j2
 public class ReportPortalHelper {
     private static String TestCaseIdValue = "221"; //TestCaseIdValue.getID()
-    private static final Logger log = LogManager.getLogger(ReportPortalHelper.class);
+//    private static final Logger log = LogManager.getLogger(ReportPortalHelper.class);
 //    private static final ThreadLocal<File> qTestFileStorage = new ThreadLocal();
 
     private ReportPortalHelper() {

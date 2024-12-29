@@ -113,12 +113,5 @@ public class DemoTest extends DriverClass {
         clientHomePage.validateItemsInCart(1);
         clientHomePage.logout();
     }
-
-    @Test(description = "TC-04")
-    @TestCaseId("TC-04") // Test case ID in Report Portal
-//    @Description("To validate Item Details On Cart Page.")
-    public static void demotest() {
-        Assert.assertTrue(false);
-    }
 }
 
