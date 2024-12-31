@@ -14,9 +14,9 @@ public class ReportPortalConfig {
         StartLaunchRQ startLaunchRQ = new StartLaunchRQ();
         startLaunchRQ.setName("Full_Regression_Kalyan221");
         startLaunchRQ.setDescription("This launch includes all regression tests executed by Kalyan Pawar.");
-        startLaunchRQ.setRerun(true);
         startLaunchRQ.setUuid("Kalyan_YwrLD7_JTZmJcAPVoewn7slyCprgKwLPeF5SBtTpvuCuPcYpWfvtV1ZCS7E99vig");
-        startLaunchRQ.setRerunOf("Rerun_Full_Regression_Kalyan221");
+//        startLaunchRQ.setRerun(true);
+//        startLaunchRQ.setRerunOf("Rerun_Full_Regression_Kalyan221");
         launch = reportPortal.newLaunch(startLaunchRQ);
     }
 
