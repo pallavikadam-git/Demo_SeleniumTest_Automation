@@ -1,3 +1,5 @@
+
+
 pipeline {
     agent any
 
@@ -22,7 +24,9 @@ pipeline {
             steps {
                 script {
                     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                        bat "${MAVEN_HOME}/bin/mvn test -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless% -Drp.launch=Regression"
+                        // bat "${MAVEN_HOME}/bin/mvn test"
+                        //bat "${MAVEN_HOME}/bin/mvn test -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless%"
+                        bat "${MAVEN_HOME}/bin/mvn test -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless% -Drp.attributes=Run:Main"
                     }
                 }
             }
@@ -40,7 +44,7 @@ pipeline {
                             keepAll: true,
                             reportDir: 'TestReport',
                             reportFiles: 'ExtentReport.html',
-                            reportName: 'Main Run Extent Report', // Give a distinct name to the main run report
+                            reportName: 'Main Run Extent Report',  // Give a distinct name to the main run report
                             includeImages: true
                         ])
                     }
@@ -56,7 +60,9 @@ pipeline {
                         // Copy the failed test suite to a new file to avoid overwriting original results
                         bat 'copy target\\surefire-reports\\testng-failed.xml target\\surefire-reports\\testng-rerun.xml'
                         catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                            bat "${MAVEN_HOME}/bin/mvn -Dsurefire.suiteXmlFiles=target/surefire-reports/testng-rerun.xml -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless% -Drp.launch=RerunRegression verify"
+                            // bat "${MAVEN_HOME}/bin/mvn -Dsurefire.suiteXmlFiles=target/surefire-reports/testng-rerun.xml verify"
+                            // bat "${MAVEN_HOME}/bin/mvn -Dsurefire.suiteXmlFiles=target/surefire-reports/testng-rerun.xml -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless% verify"
+                            bat "${MAVEN_HOME}/bin/mvn -Dsurefire.suiteXmlFiles=target/surefire-reports/testng-rerun.xml -Durl=%Env% -Dbrowser=%Browser% -DisHeadless=%isHeadless% -Drp.attributes=Run:Rerun verify"
                         }
                     } else {
                         echo 'No failed tests to rerun.'
@@ -81,7 +87,7 @@ pipeline {
                             keepAll: true,
                             reportDir: 'TestReportDir',
                             reportFiles: 'ExtentReport.html',
-                            reportName: 'Rerun Extent Report', // Ensure a different name for the rerun report
+                            reportName: 'Rerun Extent Report',  // Ensure a different name for the rerun report
                             includeImages: true
                         ])
                     }
@@ -96,6 +102,7 @@ pipeline {
             script {
                 archiveArtifacts artifacts: 'TestReport/ExtentReport.html', allowEmptyArchive: true
                 archiveArtifacts artifacts: 'TestReportDir/ExtentReport.html', allowEmptyArchive: true
+                // junit allowEmptyResults: true, allowFailedTests: true, testResults: 'target/surefire-reports/*.xml'
             }
             cleanWs()
         }
