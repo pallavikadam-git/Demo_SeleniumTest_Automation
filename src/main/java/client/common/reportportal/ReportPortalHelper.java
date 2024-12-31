@@ -28,8 +28,6 @@ import org.testng.ITestResult;
 @Log4j2
 public class ReportPortalHelper {
     private static String TestCaseIdValue = "221"; //TestCaseIdValue.getID()
-//    private static final Logger log = LogManager.getLogger(ReportPortalHelper.class);
-//    private static final ThreadLocal<File> qTestFileStorage = new ThreadLocal();
 
     private ReportPortalHelper() {
         throw new UnsupportedOperationException("Illegal access to private constructor");

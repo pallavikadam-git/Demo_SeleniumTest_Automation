@@ -4,8 +4,6 @@
     <listeners>
         <listener class-name="client.common.extentreport.TestListener" />
         <listener class-name="client.common.reportportal.ReportPortalTestListener" />
-<!--        <listener class-name="client.common.BaseTestNGListener" />-->
-<!--        <listener class-name="client.common.ReportPortalTestNGListener" />-->
     </listeners>
     <test verbose="2" preserve-order="true" name="Client_Automation">
         <classes>

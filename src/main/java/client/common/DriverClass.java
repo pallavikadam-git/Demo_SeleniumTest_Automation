@@ -22,7 +22,7 @@ public class DriverClass {
     @BeforeSuite
     public void beforeSuite(){
         ReportPortalConfig.startLaunch();
-        TEST_RUN_ID = TestCaseLabRun.createTestRun("Regression Run - " + System.currentTimeMillis());
+        TEST_RUN_ID = TestCaseLabRun.createTestRun("Regression Run - " + DateUtils.getTodaysDate() + " " + System.currentTimeMillis());
         log.info("Test Run Created with ID: " + TEST_RUN_ID);
     }
 
