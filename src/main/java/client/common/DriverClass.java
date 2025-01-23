@@ -1,7 +1,6 @@
 package client.common;
 
 import client.common.reportportal.ReportPortalConfig;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
@@ -50,7 +49,6 @@ public class DriverClass {
 
     private static WebDriver setBrowser(String browserName, boolean isHeadless){
         if(browserName.equalsIgnoreCase("chrome")){
-            WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--remote-allow-origins=*");
             if(isHeadless)
@@ -58,7 +56,6 @@ public class DriverClass {
             driver = new ChromeDriver(options);
         }
         else if(browserName.equalsIgnoreCase("edge")){
-            WebDriverManager.edgedriver().setup();
             EdgeOptions options = new EdgeOptions();
             options.addArguments("--disable-gpu");
             if(isHeadless)
@@ -66,7 +63,6 @@ public class DriverClass {
             driver = new EdgeDriver(options);
         }
         else if(browserName.equalsIgnoreCase("firefox")){
-            WebDriverManager.firefoxdriver().setup();
             FirefoxOptions options = new FirefoxOptions();
             if(isHeadless)
                 options.addArguments("--headless");
