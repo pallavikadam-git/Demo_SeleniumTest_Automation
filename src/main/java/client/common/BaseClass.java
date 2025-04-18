@@ -4,13 +4,12 @@ import client.common.extentreport.TestListener;
 import com.aventstack.extentreports.Status;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 
 @Log4j2
@@ -44,12 +43,12 @@ public class BaseClass extends TestListener {
      **/
     public static WebElement getWebElement(String xpath) {
         WebElement element = driver.findElement(By.xpath(xpath));
-        try{
-            element.isDisplayed();
-        }
-        catch (Exception e){
-            element = driver.findElement(By.xpath(xpath));
-        }
+//        try{
+//            element.isDisplayed();
+//        }
+//        catch (Exception e){
+//            element = driver.findElement(By.xpath(xpath));
+//        }
         return element;
     }
 
@@ -200,11 +199,11 @@ public class BaseClass extends TestListener {
      * Switches to the other browser tab.
      **/
     public static void switchToOtherTab() {
-        String currentTab = driver.getWindowHandle();
+        String currentTab = getCurrentWindow();
         Set<String> set = driver.getWindowHandles();
         for (String handle : set) {
             if (!handle.equals(currentTab)) {
-                driver.switchTo().window(handle);
+                switchToWindow(handle);
                 log(PASS, "Successfully switched to other tab.");
             }
         }
@@ -437,16 +436,16 @@ public class BaseClass extends TestListener {
     /**
      * Waits until the current URL matches the given pattern.
      * This method handles application slowness by polling the current URL until it matches the pattern.
-     * @param partUrl the regex pattern to match the current URL against
+     * @param url the regex pattern to match the current URL against
      * @return true if the URL matches the pattern within the wait time, false otherwise
      */
-    public boolean waitUntilUrlMatches(String partUrl) {
+    public boolean waitUntilUrlMatches(String url) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(midWaitTime));
         try {
             // Wait until the current URL matches the desired pattern
             return wait.until(webDriver -> {
-                String currentUrl = driver.getCurrentUrl();
-                return currentUrl.matches(partUrl);
+                String currentUrl = getURL();
+                return currentUrl.contains(url);
             });
         } catch (TimeoutException e) {
             return false;
@@ -508,6 +507,7 @@ public class BaseClass extends TestListener {
         }
     }
 
+
     /**
      * Converts a rgba color value to a hex color string.
      * @param rgbaColor the rgba color string (e.g., "rgba(255, 255, 255, 1)")
@@ -545,5 +545,41 @@ public class BaseClass extends TestListener {
         String selectedOption = select.getFirstSelectedOption().getText();
         log(PASS, "Successfully read selected option from " + fieldName + ": " + selectedOption);
         return selectedOption;
+    }
+
+    /**
+     * Returns title of current tab.
+     */
+    public String getTitle() {
+        return driver.getTitle();
+    }
+
+    /**
+     * Closes current tab.
+     */
+    public void closeTab() {
+        driver.close();
+    }
+
+    /**
+     * Returns current window address.
+     */
+    public static String getCurrentWindow() {
+        return driver.getWindowHandle();
+    }
+
+    /**
+     * Switches to given window.
+     * @param window
+     */
+    public static void switchToWindow(String window) {
+        driver.switchTo().window(window);
+    }
+
+    /**
+     * Returns opened page url.
+     */
+    public static String getURL() {
+        return driver.getCurrentUrl();
     }
 }

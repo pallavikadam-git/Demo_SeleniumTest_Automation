@@ -5,13 +5,17 @@
         <listener class-name="client.common.extentreport.TestListener" />
         <listener class-name="client.common.reportportal.ReportPortalTestListener" />
     </listeners>
-    <test verbose="2" preserve-order="true" name="Client_Automation">
+    <test verbose="2" preserve-order="true" name="Demo_Test_Automation">
         <classes>
             <class name="client.test.DemoTest">
                 <methods>
                     <include name="validateFilterOperationsForAlphabeticalAndReverseAlphabeticalOptions"/>
                     <include name="validateFilterOperationsForPriceLowToHighAndHighToLow"/>
                     <include name="toValidateItemDetailsOnCartPage"/>
+                    <include name="toValidateSocialMediaHyperLinks"/>
+                    <include name="toValidateAppResetFunctionalityOnItemsPage"/>
+                    <include name="toValidateAppResetFunctionalityOnCartsPage"/>
+                    <include name="toValidateItemDetailsOnCartPage2"/>
                 </methods>
             </class>
         </classes>

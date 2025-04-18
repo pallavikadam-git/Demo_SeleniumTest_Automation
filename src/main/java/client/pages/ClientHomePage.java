@@ -1,5 +1,6 @@
 package client.pages;
 
+import client.common.ClientUrl;
 import com.epam.reportportal.annotations.Step;
 import org.testng.Assert;
 import client.common.BaseClass;
@@ -17,6 +18,12 @@ public class ClientHomePage extends BaseClass {
     private static final String ADD_TO_CART_REMOVE_XPATH = "//*[text()='%s']/ancestor::div[@class='inventory_item_label']/following-sibling::div/child::button";
     private static final String ITEMS_COUNT_IN_CART_XPATH = "//*[@class='shopping_cart_badge']";
     private static final String CART_XPATH = "//*[@class='shopping_cart_link']";
+    private static final String TWITTER_XPATH = "//*[text()='Twitter']";
+    private static final String FACEBOOK_XPATH = "//*[text()='Facebook']";
+    private static final String LINKEDIN_XPATH = "//*[text()='LinkedIn']";
+    private static final String RESET_APP_XPATH = "//*[@id='reset_sidebar_link']";
+    private static final String LEFT_PANEL_CLOSE_ICON_XPATH = "//*[@id='react-burger-cross-btn']";
+
 
     // Field Names
     private static final String FILTER_DROPDOWN_FIELD = "Filter dropdown field";
@@ -26,12 +33,18 @@ public class ClientHomePage extends BaseClass {
     private static final String ADD_TO_CART = "Add to Cart Button";
     private static final String CART_ITEM_COUNT = "Cart item count";
     private static final String CART = "Cart";
+    private static final String TWITTER = "Twitter";
+    private static final String FACEBOOK = "Facebook";
+    private static final String LINKEDIN = "LinkedIn";
+    private static final String RESET_APP_STATE = "Reset App State";
+    private static final String LEFT_MENU_CLOSE_ICON = "Reset App State";
 
     /**
-     * Switches to the other open tab in the browser.
+     * Validates Home page is opened.
      */
-    public void switchToOtherTabs() {
-        switchToOtherTab();
+    @Step
+    public void validateHomePageIsOpened() {
+        Assert.assertEquals(getURL(), ClientUrl.HOME_PAGE_URL, "Home Page is Not Opened");
     }
 
     /**
@@ -43,7 +56,7 @@ public class ClientHomePage extends BaseClass {
 
     /**
      * validates selected option from the filter dropdown.
-     * @param option
+     * @param option - option name.
      */
     public void validateSelectedOptionForFilterDropdown(String option) {
         Assert.assertEquals(getSelectedOption(FILTER_DROPDOWN_FIELD, FILTER_DROPDOWN_XPATH), option);
@@ -51,7 +64,7 @@ public class ClientHomePage extends BaseClass {
 
     /**
      * validates inventory items order on the page.
-     * @param items
+     * @param items - list of items.
      */
     public void validateInventoryItemsOrder(List<String> items) {
         List<String> actualOrder = getTexts(INVENTORY_ITEM_TEXT_XPATH, INVENTORY_ITEM_ORDER);
@@ -69,7 +82,7 @@ public class ClientHomePage extends BaseClass {
      * Opens left menu on the page.
      */
     @Step
-    public void openLeftMenu(){
+    public void openLeftMenuPanel(){
         click(BURGER_BUTTON_XPATH, LEFT_PANEL_BURGER_BUTTON);
     }
 
@@ -87,13 +100,13 @@ public class ClientHomePage extends BaseClass {
      */
     @Step
     public void logout(){
-        openLeftMenu();
+        openLeftMenuPanel();
         clickLogout();
     }
 
     /**
      * validates inventory items price order on the page.
-     * @param prices
+     * @param prices - list of prices.
      */
     public void validateInventoryItemsPriceOrder(List<String> prices) {
         List<String> actualOrder = getTexts(INVENTORY_ITEM_PRICE_XPATH, INVENTORY_ITEM_ORDER);
@@ -103,8 +116,8 @@ public class ClientHomePage extends BaseClass {
     /**
      * validates inventory item price.
      * @param itemName - item name for which the price is being validated.
-     * @param price
-     */
+     * @param price - price of item.
+     **/
     @Step
     public void validatePriceForItem(String itemName, String price) {
         String actualprice = getText(String.format(INVENTORY_PRICE_XPATH, itemName), itemName);
@@ -127,7 +140,7 @@ public class ClientHomePage extends BaseClass {
     @Step
     public void validateItemsInCart(Integer itemsCount) {
         Assert.assertEquals(getText(ITEMS_COUNT_IN_CART_XPATH, CART_ITEM_COUNT), String.valueOf(itemsCount));
-        Assert.assertTrue(false);
+//        Assert.assertTrue(false);
     }
 
     /**
@@ -137,5 +150,68 @@ public class ClientHomePage extends BaseClass {
     public YourCartPage clickOpenCart() {
         click(CART_XPATH, CART);
         return new YourCartPage();
+    }
+
+    /**
+     * Clicks Twitter hyperlink.
+     */
+    @Step
+    public void clickTwitterIcon() {
+        click(TWITTER_XPATH, TWITTER);
+    }
+
+    /**
+     * Switch and
+     */
+    @Step
+    public void validateNewlyOpenedTab(String url) {
+        String mainWindow = getCurrentWindow();
+        switchToOtherTab();
+        waitUntilUrlMatches(url);
+        Assert.assertTrue(driver.getCurrentUrl().contains(url));
+        closeTab();
+        switchToWindow(mainWindow);
+    }
+
+    /**
+     * Clicks Facebook hyperlink.
+     */
+    @Step
+    public void clickFacebookIcon() {
+        click(FACEBOOK_XPATH, FACEBOOK);
+    }
+
+    /**
+     * Clicks LinkedIn hyperlink.
+     */
+    @Step
+    public void clickLinkedInIcon() {
+        click(LINKEDIN_XPATH, LINKEDIN);
+    }
+
+    /**
+     * Clicks on Reset App State link.
+     */
+    @Step
+    public void clickResetAppState() {
+        waitUntilElementIsDisplayed(RESET_APP_XPATH, RESET_APP_STATE);
+        click(RESET_APP_XPATH, RESET_APP_STATE);
+    }
+
+    /**
+     * Closes left menu panel.
+     */
+    @Step
+    public void closeLeftMenuPanel() {
+        click(LEFT_PANEL_CLOSE_ICON_XPATH, LEFT_MENU_CLOSE_ICON);
+    }
+
+    /**
+     * Validates no item count is displayed on cart.
+     */
+    @Step
+    public void validateCartIsEmpty() {
+        boolean isAbsent = waitUntilElementIsDisappeared(ITEMS_COUNT_IN_CART_XPATH, CART_ITEM_COUNT);
+        Assert.assertTrue(isAbsent);
     }
 }

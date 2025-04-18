@@ -1,6 +1,7 @@
 package client.common;
 
 import client.common.reportportal.ReportPortalConfig;
+import lombok.Getter;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
@@ -14,20 +15,19 @@ import org.testng.annotations.*;
 
 @Slf4j
 public class DriverClass {
+    @Getter
     public static WebDriver driver;
-    public static Integer TEST_RUN_ID;
+//    public static Integer TEST_RUN_ID;
 
     @SneakyThrows
     @BeforeSuite
     public void beforeSuite(){
         ReportPortalConfig.startLaunch();
-        TEST_RUN_ID = TestCaseLabRun.createTestRun("Regression Run - " + DateUtils.getTodaysDate() + " " + System.currentTimeMillis());
-        log.info("Test Run Created with ID: " + TEST_RUN_ID);
     }
 
     @BeforeMethod
     @Parameters(value={"url", "browser", "isHeadless"})
-    public void driverSetUp(@Optional(ClientUrl.LOGIN_URL) String url, @Optional("chrome") String browser, @Optional("false") boolean isHeadless){
+    public void driverSetUp(@Optional(LoginCreds.LOGIN_URL) String url, @Optional("chrome") String browser, @Optional("false") boolean isHeadless){
         driver = setBrowser(browser, isHeadless);
         driver.manage().window().maximize();
 //        driver.manage().window().minimize();
@@ -68,10 +68,6 @@ public class DriverClass {
                 options.addArguments("--headless");
             driver = new FirefoxDriver(options);
         }
-        return driver;
-    }
-
-    public static WebDriver getDriver(){
         return driver;
     }
 }

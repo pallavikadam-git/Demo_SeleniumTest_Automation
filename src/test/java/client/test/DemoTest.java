@@ -1,6 +1,7 @@
 package client.test;
 
 import client.common.extentreport.TestListener;
+import client.pages.CheckOutPage;
 import client.pages.ClientHomePage;
 import client.pages.LoginPage;
 import client.pages.YourCartPage;
@@ -24,7 +25,7 @@ public class DemoTest extends DriverClass {
      */
     @Test(description = "TC-01")
     @TestCaseId("TC-01") // Test case ID in Report Portal
-//    @Description("Validate Filter Operations For Alphabetical and Reverese Alphabetical Options.")
+    @Description("Validate Filter Operations For Alphabetical and Reverse Alphabetical Options.")
     public static void validateFilterOperationsForAlphabeticalAndReverseAlphabeticalOptions() {
         String nameA2Z = "Name (A to Z)";
         String nameZ2A = "Name (Z to A)";
@@ -109,9 +110,145 @@ public class DemoTest extends DriverClass {
         yourCartPage.validateDescriptionForItems(item2, description2);
         yourCartPage.validatePriceForItems(item1, price1);
         yourCartPage.removeItemFromCart(item2);
-        yourCartPage.clickContinueShoppingButton();
+        clientHomePage = yourCartPage.clickContinueShoppingButton();
         clientHomePage.validateItemsInCart(1);
         clientHomePage.logout();
+        LoginPage.validateLoginPageIsOpened();
+    }
+
+    /**
+     * Author - Kalyan Pawar
+     * TC-04 - To validate Social Media hyperlinks.
+     */
+    @Test(description = "TC-04")
+    @TestCaseId("TC-04") // Test case ID in Report Portal
+//    @Description("To validate Social Media hyperlinks.")
+    public static void toValidateSocialMediaHyperLinks() {
+        String twitterUrl = "https://x.com/saucelabs";
+        String facebookUrl = "https://www.facebook.com/saucelabs";
+        String linkedInUrl = "https://www.linkedin.com/company/sauce-labs/";
+
+        ClientHomePage clientHomePage = new LoginPage().login();
+        BaseClass.scrollToBottom();
+        clientHomePage.clickTwitterIcon();
+        clientHomePage.validateNewlyOpenedTab(twitterUrl);
+        clientHomePage.clickFacebookIcon();
+        clientHomePage.validateNewlyOpenedTab(facebookUrl);
+        clientHomePage.clickLinkedInIcon();
+        clientHomePage.validateNewlyOpenedTab(linkedInUrl);
+        clientHomePage.logout();
+    }
+
+    /**
+     * Author - Kalyan Pawar
+     * TC-05 - To validate App reset functionality on Items page.
+     */
+    @Test(description = "TC-05")
+    @TestCaseId("TC-05") // Test case ID in Report Portal
+//    @Description("To validate App reset functionality on Items page.")
+    public static void toValidateAppResetFunctionalityOnItemsPage() {
+        String item1 = "Sauce Labs Onesie";
+        String price1 = "$7.99";
+
+        ClientHomePage clientHomePage = new LoginPage().login();
+        clientHomePage.validatePriceForItem(item1, price1);
+        clientHomePage.addItemToCartOrRemove(item1);
+        clientHomePage.validateItemsInCart(1);
+        clientHomePage.logout();
+        clientHomePage = new LoginPage().login();
+        clientHomePage.validateItemsInCart(1);
+        clientHomePage.refreshPage();
+        clientHomePage.validateItemsInCart(1);
+
+        clientHomePage.openLeftMenuPanel();
+        clientHomePage.clickResetAppState();
+        clientHomePage.closeLeftMenuPanel();
+        clientHomePage.validateCartIsEmpty();
+        clientHomePage.logout();
+        LoginPage.validateLoginPageIsOpened();
+    }
+
+    /**
+     * Author - Kalyan Pawar
+     * TC-06 - To validate App reset functionality on Carts page.
+     */
+    @Test(description = "TC-06")
+    @TestCaseId("TC-06") // Test case ID in Report Portal
+//    @Description("To validate App reset functionality on Carts page.")
+    public static void toValidateAppResetFunctionalityOnCartsPage() {
+        String item2 = "Sauce Labs Bike Light";
+        String price2 = "$9.99";
+        String description2 = "A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting " +
+                "modes, 1 AAA battery included.";
+
+        ClientHomePage clientHomePage = new LoginPage().login();
+        clientHomePage.validatePriceForItem(item2, price2);
+        clientHomePage.addItemToCartOrRemove(item2);
+        clientHomePage.validateItemsInCart(1);
+        YourCartPage yourCartPage = clientHomePage.clickOpenCart();
+        yourCartPage.validateDescriptionForItems(item2, description2);
+        yourCartPage.validatePriceForItems(item2, price2);
+        clientHomePage.logout();
+        LoginPage.validateLoginPageIsOpened();
+
+        clientHomePage = new LoginPage().login();
+        clientHomePage.clickOpenCart();
+        yourCartPage.validateDescriptionForItems(item2, description2);
+        yourCartPage.validatePriceForItems(item2, price2);
+        clientHomePage.openLeftMenuPanel();
+        clientHomePage.clickResetAppState();
+        clientHomePage.refreshPage();
+        yourCartPage.validateNoItemsInCart();
+        clientHomePage.logout();
+        Assert.assertTrue(false);
+    }
+
+    /**
+     * Author - Kalyan Pawar
+     * TC-07 - To validate item details on Cart page.
+     */
+    @Test(description = "TC-07")
+    @TestCaseId("TC-07") // Test case ID in Report Portal
+//    @Description("To validate Item Details On Cart Page.")
+    public static void toValidateItemDetailsOnCartPage2() {
+        String item1 = "Sauce Labs Backpack";
+        String price1 = "$29.99";
+        String item2 = "Sauce Labs Bolt T-Shirt";
+        String price2 = "$15.99";
+        String description1 = "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.";
+        String description2 = "Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, " +
+                "heather gray with red bolt.";
+        String cancelButton = ClientTestValues.CANCEL;
+        String cancelButtonColor = Colors.WHITE;
+        String continueButton = ClientTestValues.CONTINUE;
+        String continueButtonColor = Colors.MINT_GREEN;
+
+        ClientHomePage clientHomePage = new LoginPage().login();
+        clientHomePage.validateHomePageIsOpened();
+        clientHomePage.validatePriceForItem(item1, price1);
+        clientHomePage.validatePriceForItem(item2, price2);
+        clientHomePage.addItemToCartOrRemove(item1);
+        clientHomePage.validateItemsInCart(1);
+        clientHomePage.addItemToCartOrRemove(item2);
+        clientHomePage.validateItemsInCart(2);
+
+        YourCartPage yourCartPage = clientHomePage.clickOpenCart();
+        yourCartPage.validateCartPageIsOpened();
+        yourCartPage.validateDescriptionForItems(item1, description1);
+        yourCartPage.validatePriceForItems(item1, price1);
+        yourCartPage.validateDescriptionForItems(item2, description2);
+        yourCartPage.validatePriceForItems(item1, price1);
+
+        CheckOutPage checkOutPage = yourCartPage.clickCheckOutButton();
+        checkOutPage.validateCheckOutPageIsOpened();
+        checkOutPage.validateTextInputFieldsAreDisplayed();
+        checkOutPage.validateBackGroundColorOfButton(cancelButton, cancelButtonColor);
+        checkOutPage.validateBackGroundColorOfButton(continueButton, continueButtonColor);
+        yourCartPage = checkOutPage.clickCancelButton();
+        yourCartPage.validateCartPageIsOpened();
+
+        clientHomePage.logout();
+        LoginPage.validateLoginPageIsOpened();
     }
 }
 
