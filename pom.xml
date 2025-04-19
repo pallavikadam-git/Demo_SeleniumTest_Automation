@@ -9,13 +9,11 @@
 
   <name>Demo_Test_Automation</name>
   <url>http://maven.apache.org</url>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
   </properties>
-
   <dependencies>
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
     <dependency>
@@ -26,12 +24,12 @@
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-ooxml</artifactId>
-      <version>5.2.3</version> <!-- Check the latest version -->
+      <version>5.2.3</version>
     </dependency>
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi</artifactId>
-      <version>5.2.3</version> <!-- Check the latest version -->
+      <version>5.2.3</version>
     </dependency>
     <dependency>
       <groupId>org.testng</groupId>
@@ -42,7 +40,7 @@
     <dependency>
       <groupId>com.aventstack</groupId>
       <artifactId>extentreports</artifactId>
-      <version>5.0.9</version> <!-- Check for the latest version -->
+      <version>5.0.9</version>
     </dependency>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
@@ -60,21 +58,35 @@
       <version>1.18.22</version>
       <scope>provided</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.epam.reportportal/client-java -->
     <dependency>
       <groupId>com.epam.reportportal</groupId>
       <artifactId>client-java</artifactId>
-      <version>5.2.15</version>
+      <version>5.3.9</version>
       <scope>test</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.epam.reportportal/logger-java-log4j -->
     <dependency>
       <groupId>com.epam.reportportal</groupId>
       <artifactId>logger-java-log4j</artifactId>
-      <version>5.1.0</version>
+      <version>5.2.3</version>
     </dependency>
     <dependency>
       <groupId>com.epam.reportportal</groupId>
       <artifactId>agent-java-testng</artifactId>
       <version>5.4.4</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.epam.reportportal</groupId>
+      <artifactId>commons-model</artifactId>
+      <version>5.3.3</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.epam.reportportal</groupId>
+      <artifactId>client-java</artifactId>
+      <version>5.3.9</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
@@ -86,7 +98,7 @@
         <version>2.22.2</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>testng.xml</suiteXmlFile> <!-- Main testng.xml for the first run -->
+            <suiteXmlFile>testng.xml</suiteXmlFile>
           </suiteXmlFiles>
           <testFailureIgnore>true</testFailureIgnore>
         </configuration>

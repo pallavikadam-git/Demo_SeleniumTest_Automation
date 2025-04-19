@@ -5,32 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47e1eee6-e0c0-4065-85eb-d85712f0f39f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/pages/CheckOutPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/easycode.ignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/easycode/codebase-v2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Resources/reportportal.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Resources/reportportal.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/common/BaseClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/common/BaseClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/common/ClientTestValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/common/ClientTestValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/common/ClientUrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/common/ClientUrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/common/Colors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/common/Colors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/common/DriverClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/common/DriverClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/common/LoginCreds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/common/LoginCreds.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/common/ScreenshotUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/common/ScreenshotUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/common/TestCaseLabRun.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/common/extentreport/TestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/common/extentreport/TestListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/common/reportportal/ReportPortalHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/common/reportportal/ReportPortalHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/common/reportportal/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/common/reportportal/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/pages/ClientHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/pages/ClientHomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/pages/YourCartPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/pages/YourCartPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/client/test/DemoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/client/test/DemoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/common/reportportal/ReportPortalConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/common/reportportal/ReportPortalConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

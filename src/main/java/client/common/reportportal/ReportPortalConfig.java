@@ -1,9 +1,9 @@
 package client.common.reportportal;
 
+import com.epam.reportportal.service.Launch;
 import com.epam.reportportal.service.ReportPortal;
 import com.epam.ta.reportportal.ws.model.FinishExecutionRQ;
 import com.epam.ta.reportportal.ws.model.launch.StartLaunchRQ;
-import com.epam.reportportal.service.Launch;
 
 public class ReportPortalConfig {
     private static Launch launch;
