@@ -1,4 +1,4 @@
-package client.test;
+package client;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

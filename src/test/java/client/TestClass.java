@@ -9,7 +9,6 @@ import java.util.Set;
 public class TestClass {
 
     public static void main(String[] args) {
-
         //1. https://nichethyself.com/tourism/home.html
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -19,11 +18,11 @@ public class TestClass {
         WebElement customizedTours = driver.findElement(By.xpath("//*[text()='Customized tours']"));
         customizedTours.click();
 
-        //3. Select "Home Stay" in preferred stay dropwdown/combo towards the bottom of the page.
-        String curremtWindow = driver.getWindowHandle();
+        //3. Select "Home Stay" in preferred stay dropdown/combo towards the bottom of the page.
+        String currentWindow = driver.getWindowHandle();
         Set<String> windows = driver.getWindowHandles();
         for(String window : windows){
-            if(!window.equals(curremtWindow)){
+            if(!window.equals(currentWindow)){
                 driver.switchTo().window(window);
             }
         }
@@ -51,7 +50,7 @@ public class TestClass {
         WebElement searchIcon = driver.findElement(By.xpath("//span[@class='glyphicon glyphicon-search']"));
         searchIcon.click();
 
-        //7. Enter "London" on the pop up window and click on OK.
+        //7. Enter "London" on the popup window and click on OK.
         Alert alert = driver.switchTo().alert();
         alert.sendKeys("London");
         alert.accept();

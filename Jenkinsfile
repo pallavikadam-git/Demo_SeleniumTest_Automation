@@ -1,5 +1,3 @@
-
-
 pipeline {
     agent any
 
@@ -8,6 +6,7 @@ pipeline {
     }
 
     stages {
+
         stage('Clean') {
             steps {
                 bat "${MAVEN_HOME}/bin/mvn clean"

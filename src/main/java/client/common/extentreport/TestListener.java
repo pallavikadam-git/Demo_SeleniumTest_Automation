@@ -38,7 +38,6 @@ public class TestListener extends DriverClass implements ITestListener {
     public void onTestSuccess(ITestResult result) {
         test.log(Status.PASS, "Test passed");
         ExtentManager.flush();
-
     }
 
     @SneakyThrows

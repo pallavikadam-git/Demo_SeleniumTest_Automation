@@ -43,12 +43,12 @@ public class BaseClass extends TestListener {
      **/
     public static WebElement getWebElement(String xpath) {
         WebElement element = driver.findElement(By.xpath(xpath));
-//        try{
-//            element.isDisplayed();
-//        }
-//        catch (Exception e){
-//            element = driver.findElement(By.xpath(xpath));
-//        }
+        try{
+            element.isDisplayed();
+        }
+        catch (Exception e){
+            element = driver.findElement(By.xpath(xpath));
+        }
         return element;
     }
 
@@ -570,7 +570,7 @@ public class BaseClass extends TestListener {
 
     /**
      * Switches to given window.
-     * @param window
+     * @param window - window address to which it should switch.
      */
     public static void switchToWindow(String window) {
         driver.switchTo().window(window);

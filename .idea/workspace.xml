@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47e1eee6-e0c0-4065-85eb-d85712f0f39f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/client/TestNGAsserts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/common/reportportal/ReportPortalConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/common/reportportal/ReportPortalConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Resources/reportportal.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Resources/reportportal.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/common/BaseClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/common/BaseClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/common/DriverClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/common/DriverClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/common/extentreport/TestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/common/extentreport/TestListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/client/TestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/client/TestClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/client/test/AutomationExercise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/client/AutomationExercise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/client/test/GoibiboTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/client/GoibiboTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +57,10 @@
   &quot;keyToString&quot;: {
     &quot;Application.AutomationExercise.executor&quot;: &quot;Run&quot;,
     &quot;Application.BaseClass.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CodePractice.executor&quot;: &quot;Run&quot;,
     &quot;Application.GoibiboTest.executor&quot;: &quot;Run&quot;,
     &quot;Application.TestClass.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestNGAsserts.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -63,13 +73,18 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="client" />
+    </key>
+  </component>
   <component name="RunManager" selected="TestNG.C:/Users/admin/Desktop/FrameWork/Demo_Test_Automation/testng.xml">
     <configuration name="AutomationExercise" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="client.test.AutomationExercise" />
+      <option name="MAIN_CLASS_NAME" value="client.AutomationExercise" />
       <module name="Demo_Test_Automation" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="client.test.*" />
+          <option name="PATTERN" value="client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -77,12 +92,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BaseClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="client.common.BaseClass" />
+    <configuration name="CodePractice" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.test.CodePractice" />
       <module name="Demo_Test_Automation" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="client.common.*" />
+          <option name="PATTERN" value="client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -91,11 +106,11 @@
       </method>
     </configuration>
     <configuration name="GoibiboTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="client.test.GoibiboTest" />
+      <option name="MAIN_CLASS_NAME" value="client.GoibiboTest" />
       <module name="Demo_Test_Automation" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="client.test.*" />
+          <option name="PATTERN" value="client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -103,8 +118,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="client.TestClass" />
+    <configuration name="TestNGAsserts" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.TestNGAsserts" />
       <module name="Demo_Test_Automation" />
       <extension name="coverage">
         <pattern>
@@ -142,10 +157,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="TestNG.C:/Users/admin/Desktop/FrameWork/Demo_Test_Automation/testng.xml" />
+        <item itemvalue="Application.CodePractice" />
+        <item itemvalue="Application.TestNGAsserts" />
         <item itemvalue="Application.AutomationExercise" />
         <item itemvalue="Application.GoibiboTest" />
-        <item itemvalue="Application.TestClass" />
-        <item itemvalue="Application.BaseClass" />
       </list>
     </recent_temporary>
   </component>
@@ -159,6 +174,17 @@
       <updated>1734351539515</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
