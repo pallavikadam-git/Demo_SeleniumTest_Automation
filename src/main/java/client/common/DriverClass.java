@@ -54,11 +54,13 @@ public class DriverClass {
         if(browserName.equalsIgnoreCase("chrome")){
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--remote-allow-origins=*");
-            Map<String, Object> prefs = new HashMap<>();
-            prefs.put("credentials_enable_service", false);
-            prefs.put("profile.password_manager_enabled", false);
+            options.addArguments("--incognito");
 
-            options.setExperimentalOption("prefs", prefs);
+//            Map<String, Object> prefs = new HashMap<>();
+//            prefs.put("credentials_enable_service", false);
+//            prefs.put("profile.password_manager_enabled", false);
+//
+//            options.setExperimentalOption("prefs", prefs);
             if(isHeadless)
                 options.addArguments("--headless=old");
             driver = new ChromeDriver(options);
